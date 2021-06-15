@@ -1,0 +1,39 @@
+{
+  "name": "snowflake-pool",
+  "version": "1.0.0",
+  "description": "Snowflake connection pool",
+  "main": "./dist/index.js",
+  "repository": "",
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "test": "jest --detectOpenHandles --env jsdom",
+    "lint": "eslint -c .eslintrc.js --ext .ts --fix ./src",
+    "posttest": "npm run lint",
+    "watch": "tsc --watch",
+    "prepare-release": "npm run build",
+    "publish-release": "npm run prepare-release && npm install && npm publish"
+  },
+  "keywords": [
+    "snowflake",
+    "connection",
+    "pool",
+    "promise"
+  ],
+  "author": "jacob@solutionsfit.com",
+  "license": "MIT",
+  "dependencies": {
+    "generic-pool": "^3.7.8",
+    "snowflake-promise": "^4.5.0",
+    "snowflake-sdk": "^1.6.1"
+  },
+  "devDependencies": {
+    "@types/generic-pool": "^3.1.9",
+    "eslint": "^7.26.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.3.0",
+    "typescript": "4.2.4"
+  }
+}
