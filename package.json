@@ -21,7 +21,7 @@
     "pool",
     "promise"
   ],
-  "author": "jacob@solutionsfit.com",
+  "author": "Jacob Orshalick",
   "license": "MIT",
   "dependencies": {
     "generic-pool": "^3.7.8",
@@ -35,5 +35,9 @@
     "eslint-plugin-prettier": "^3.4.0",
     "prettier": "^2.3.0",
     "typescript": "4.2.4"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/jorshali/snowflake-pool/issues"
+  },
+  "homepage": "https://github.com/jorshali/snowflake-pool"
 }
