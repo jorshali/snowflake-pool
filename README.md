@@ -63,7 +63,7 @@ await connectionPool.use((client) =>
 
 ## Connecting
 
-The `createSnowflakePool` function takes up to three arguments:
+The `createSnowflakePool` function takes up to four arguments:
 
 `createSnowflakePool(connectionOptions, [ poolOptions, [ loggingOptions, [ configureOptions ] ] ])`
 
