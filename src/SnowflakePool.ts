@@ -6,12 +6,12 @@ import { ConfigureOptions } from 'snowflake-promise/build/src/types/ConfigureOpt
 type PoolOptions = Options & {
   /** optional function to validate a connection is still up in the pool */
   validate?: (client: Snowflake) => Promise<boolean>;
-}
+};
 
 type LoggingOptions = PromiseLoggingOptions & {
   /** optional function to log pool connection status (e.g. console.log) */
   logConnection?: (connectionStatus: string) => void;
-}
+};
 
 class SnowflakeConnectionFactory implements Factory<Snowflake> {
   private connectionLoggingEnabled: boolean;
@@ -20,7 +20,7 @@ class SnowflakeConnectionFactory implements Factory<Snowflake> {
     private connectionOptions: ConnectionOptions,
     private poolOptions?: PoolOptions,
     private loggingOptions?: LoggingOptions,
-    private configureOptions?: ConfigureOptions,
+    private configureOptions?: ConfigureOptions
   ) {
     this.connectionLoggingEnabled = this.loggingOptions && !!this.loggingOptions.logConnection;
   }
@@ -29,7 +29,9 @@ class SnowflakeConnectionFactory implements Factory<Snowflake> {
     const client = new Snowflake(this.connectionOptions, this.loggingOptions, this.configureOptions);
 
     if (this.connectionLoggingEnabled) {
-      this.loggingOptions.logConnection(`Establishing Snowflake connection to account: ${this.connectionOptions.account}, warehouse: ${this.connectionOptions.warehouse}.`);
+      this.loggingOptions.logConnection(
+        `Establishing Snowflake connection to account: ${this.connectionOptions.account}, warehouse: ${this.connectionOptions.warehouse}.`
+      );
     }
 
     await client.connect();
@@ -77,18 +79,15 @@ class SnowflakeConnectionFactory implements Factory<Snowflake> {
  * @param configureOptions Additional configuration options
  */
 export const createSnowflakePool = (
-  connectionOptions: ConnectionOptions, 
+  connectionOptions: ConnectionOptions,
   poolOptions?: PoolOptions,
   loggingOptions?: LoggingOptions,
   configureOptions?: ConfigureOptions
 ) => {
   const connectionPool = createPool(
-    new SnowflakeConnectionFactory(
-      connectionOptions, 
-      poolOptions,
-      loggingOptions, 
-      configureOptions
-    ), poolOptions);
+    new SnowflakeConnectionFactory(connectionOptions, poolOptions, loggingOptions, configureOptions),
+    poolOptions
+  );
 
   return connectionPool;
-}
+};

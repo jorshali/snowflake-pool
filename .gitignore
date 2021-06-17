@@ -4,6 +4,7 @@ node_modules
 !systemjs.config.*
 *.log
 .vscode
+.idea
 logs
 
 # testing
