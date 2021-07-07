@@ -1,6 +1,6 @@
 {
   "name": "snowflake-pool",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Snowflake connection pool",
   "main": "./dist/index.js",
   "repository": "",
