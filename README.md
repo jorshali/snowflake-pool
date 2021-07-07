@@ -13,23 +13,22 @@ This is a simple wrapper that enables pooling of [Snowflake SDK](https://www.npm
 
 ```typescript
 const connectionPool = createSnowflakePool({
-    account: '<account name>',
-    username: '<username>',
-    password: '<password>',
-    database: 'SNOWFLAKE_SAMPLE_DATA',
-    schema: 'SOLUTIONSFIT_TEST',
-    warehouse: 'DEMO'
-  });
-}
+  account: '<account name>',
+  username: '<username>',
+  password: '<password>',
+  database: 'SNOWFLAKE_SAMPLE_DATA',
+  schema: 'SOLUTIONSFIT_TEST',
+  warehouse: 'DEMO'
+});
 
-await connectionPool.use((client) =>
+await connectionPool.use(async (client) => {
   const rows = await client.execute(
     'SELECT COUNT(*) FROM USERS WHERE FIRSTNAME=:1',
     ['John']
   );
 
   console.log(rows);
-);
+});
 ```
 
 ## Usage with Pooling Configuration
@@ -43,7 +42,7 @@ const connectionPool = createSnowflakePool({
     schema: 'SOLUTIONSFIT_TEST',
     warehouse: 'DEMO'
   }, {
-    max: 10
+    max: 10,
     min: 0,
     autostart: false,
     idleTimeoutMillis: 60 * 60 * 1000,
@@ -51,14 +50,14 @@ const connectionPool = createSnowflakePool({
   });
 }
 
-await connectionPool.use((client) =>
+await connectionPool.use(async (client) => {
   const rows = await client.execute(
     'SELECT COUNT(*) FROM USERS WHERE FIRSTNAME=:1',
     ['John']
   );
 
   console.log(rows);
-);
+});
 ```
 
 ## Connecting
