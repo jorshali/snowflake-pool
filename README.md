@@ -17,7 +17,7 @@ const connectionPool = createSnowflakePool({
   username: '<username>',
   password: '<password>',
   database: 'SNOWFLAKE_SAMPLE_DATA',
-  schema: 'SOLUTIONSFIT_TEST',
+  schema: 'FOCUS_DEV_TEST',
   warehouse: 'DEMO'
 });
 
@@ -39,7 +39,7 @@ const connectionPool = createSnowflakePool({
     username: '<username>',
     password: '<password>',
     database: 'SNOWFLAKE_SAMPLE_DATA',
-    schema: 'SOLUTIONSFIT_TEST',
+    schema: 'FOCUS_DEV_TEST',
     warehouse: 'DEMO'
   }, {
     max: 10,
